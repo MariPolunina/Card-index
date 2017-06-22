@@ -31,8 +31,8 @@
         <StackPanel>
             <Menu >
                 <MenuItem Header="Меню">
-                    <MenuItem Header="Добавить книгу"></MenuItem>
-                    <MenuItem Header="Добавить автора"></MenuItem>
+                    <MenuItem Header="Добавить книгу" Command="{Binding A}"></MenuItem>
+                    <MenuItem Header="Добавить автора" Command="{Binding Au}"></MenuItem>
                 </MenuItem>
             </Menu>
         </StackPanel>
@@ -46,32 +46,15 @@
             <TextBlock Text="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBox Grid.Column="1" Text="{Binding _find}" ></TextBox>
             <Button Grid.Column="3" Content="Найти" Command="{Binding F}"></Button>
-            <ComboBox Grid.Column="2" ItemsSource="{Binding Filter}" SelectedItem="{Binding SelectedFilter}"></ComboBox>
+            <ComboBox Grid.Column="2" ItemsSource="{Binding Filter}" SelectedItem="{Binding _selectedElement, Mode=TwoWay}"></ComboBox>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
-            <Button Content="Обовить" Click="Button_Click"></Button>
             <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <ItemsControl Grid.Column="2" ItemsSource="{Binding Elements}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="5*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Название"></TextBlock>
-                            <Button Grid.Row="1"></Button>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding Elements}"></ItemsControl>
     </Grid>
 </Controls:MetroWindow>

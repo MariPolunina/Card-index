@@ -65,14 +65,27 @@ namespace Library.ViewModel
             }
         }
         public List<string> Filter{ get; set; }
-        public string SelectedFilter { get; set; }
+        private string SelectedFilter { get; set; }
+        public string _selectedFilter
+        {
+            get
+            {
+                return SelectedFilter;
+            }
+            set
+            {
+                RaisePropertyChanged("SelectedFilter");
+                SelectedFilter = value;
+            }
+        }
         public List<string> Menu { get; set; }
         public string SelectedMenu { get; set; }
         public ObservableCollection<string> Elements { get; set; }
         public ObservableCollection<string> Authors { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public FindCommand F { get; set; }
-        
+        public AddBookComand A { get; set; }
+        public AddAuthorCommand Au { get; set; }
         public MainViewModel()
         {
             Filter = new List<string>()
@@ -81,13 +94,37 @@ namespace Library.ViewModel
                 "по автору"
             };
             F = new FindCommand();
+            A = new AddBookComand();
+            Au = new AddAuthorCommand();
             Books = new ObservableCollection<string>()
             {
                 "Война и мир",
                 "Анна Каренина",
-                "Грпнптовый браслет",
+                "Гранатовый браслет",
                 "Мертвые души"
             };
+            if (_selectedFilter == "по книге")
+            {
+                Elements = new ObservableCollection<string>()
+                {
+                    "Война и мир",
+                "Анна Каренина",
+                "Гранатовый браслет",
+                "Мертвые души"
+
+                };
+            }
+            else
+            if(_selectedFilter== "по автору")
+            {
+                Elements = new ObservableCollection<string>()
+                {
+                    "Л.Н.Толстой",
+                "Л.Н.Толстой",
+                "А.Н.Куприн",
+                "Н.В.Гоголь"
+                };
+            }
         }
 
         ////public override void Cleanup()
