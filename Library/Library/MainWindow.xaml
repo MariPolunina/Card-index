@@ -18,6 +18,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -50,10 +53,25 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Content="Обовить"></Button>
-            <Button Grid.Column="1" Content="Закрыть"></Button>
+            
+            <Button Content="Обовить" Click="Button_Click"></Button>
+            <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <ItemsControl Grid.Column="2"></ItemsControl>
+        <ItemsControl Grid.Column="2" ItemsSource="{Binding Elements}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Название"></TextBlock>
+                            <Button Grid.Row="1"></Button>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
-    
 </Controls:MetroWindow>

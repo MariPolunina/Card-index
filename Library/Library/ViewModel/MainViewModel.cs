@@ -25,13 +25,54 @@ namespace Library.ViewModel
                 find = value;
             }
         }
-       public List<string> Filter{ get; set; }
+        private string NameOfBook;
+        public string _nameOfBook
+        {
+            get
+            {
+                return NameOfBook;
+            }
+            set
+            {
+                RaisePropertyChanged("NameOfBook");
+                NameOfBook = value;
+            }
+        }
+        private string NameOfAuthor;
+        public string _nameOfAuthor
+        {
+            get
+            {
+                return NameOfAuthor;
+            }
+            set
+            {
+                RaisePropertyChanged("NameOfAuthor");
+                NameOfAuthor = value;
+            }
+        }
+        private string selectedElement;
+        public string _selectedElement
+        {
+            get
+            {
+                return selectedElement;
+            }
+            set
+            {
+                RaisePropertyChanged("selectedElement");
+                selectedElement = value;
+            }
+        }
+        public List<string> Filter{ get; set; }
         public string SelectedFilter { get; set; }
-
         public List<string> Menu { get; set; }
         public string SelectedMenu { get; set; }
         public ObservableCollection<string> Elements { get; set; }
+        public ObservableCollection<string> Authors { get; set; }
+        public ObservableCollection<string> Books { get; set; }
         public FindCommand F { get; set; }
+        
         public MainViewModel()
         {
             Filter = new List<string>()
@@ -40,6 +81,13 @@ namespace Library.ViewModel
                 "по автору"
             };
             F = new FindCommand();
+            Books = new ObservableCollection<string>()
+            {
+                "Война и мир",
+                "Анна Каренина",
+                "Грпнптовый браслет",
+                "Мертвые души"
+            };
         }
 
         ////public override void Cleanup()
