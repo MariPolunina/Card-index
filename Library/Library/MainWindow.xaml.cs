@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Library.ViewModel;
 using MahApps.Metro.Controls;
+using System.Collections.ObjectModel;
 
 namespace Library
 {
@@ -23,10 +24,6 @@ namespace Library
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AboutAuthor A = new AboutAuthor();
-            A.Show();
-        }
+
     }
 }

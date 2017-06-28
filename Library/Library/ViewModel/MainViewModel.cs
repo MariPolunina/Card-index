@@ -2,6 +2,7 @@
 using Library.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Library.ViewModel
 {
@@ -80,7 +81,7 @@ namespace Library.ViewModel
         }
         public List<string> Menu { get; set; }
         public string SelectedMenu { get; set; }
-        public ObservableCollection<string> Elements { get; set; }
+        public ObservableCollection<Books_Authors> Elements { get; set; }
         public ObservableCollection<string> Authors { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public FindCommand F { get; set; }
@@ -103,28 +104,11 @@ namespace Library.ViewModel
                 "Гранатовый браслет",
                 "Мертвые души"
             };
-            if (_selectedFilter == "по книге")
-            {
-                Elements = new ObservableCollection<string>()
-                {
-                    "Война и мир",
-                "Анна Каренина",
-                "Гранатовый браслет",
-                "Мертвые души"
-
-                };
-            }
-            else
-            if(_selectedFilter== "по автору")
-            {
-                Elements = new ObservableCollection<string>()
-                {
-                    "Л.Н.Толстой",
-                "Л.Н.Толстой",
-                "А.Н.Куприн",
-                "Н.В.Гоголь"
-                };
-            }
+            Elements = new ObservableCollection<Books_Authors>();
+            Elements.Add(new Books_Authors("Война и мир", "Л.Н.Толстой"));
+            Elements.Add(new Books_Authors("Анна Каренина", "Л.Н.Толстой"));
+            Elements.Add(new Books_Authors("Гранатовый браслет", "А.И.Куприн"));
+            Elements.Add(new Books_Authors("Мертвые души", "Н.В.Гоголь"));
         }
 
         ////public override void Cleanup()

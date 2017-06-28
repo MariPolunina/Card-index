@@ -45,8 +45,8 @@
             </Grid.ColumnDefinitions>
             <TextBlock Text="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBox Grid.Column="1" Text="{Binding _find}" ></TextBox>
-            <Button Grid.Column="3" Content="Найти" Command="{Binding F}"></Button>
-            <ComboBox Grid.Column="2" ItemsSource="{Binding Filter}" SelectedItem="{Binding _selectedElement, Mode=TwoWay}"></ComboBox>
+            <Button Grid.Column="3" Content="Найти" Command="{Binding F}" CommandParameter="{Binding}"></Button>
+            <ComboBox Grid.Column="2" ItemsSource="{Binding Filter}" SelectedItem="{Binding _selectedFilter, Mode=TwoWay}"></ComboBox>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -55,6 +55,21 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding Elements}"></ItemsControl>
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding Elements}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Book}"></TextBlock>
+                            <TextBlock Grid.Column="1" Text="{Binding Author}"></TextBlock>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Controls:MetroWindow>
