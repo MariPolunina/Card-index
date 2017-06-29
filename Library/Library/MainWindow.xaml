@@ -10,7 +10,7 @@
         Width="800"
         Title="Картотека"
         GlowBrush="{DynamicResource AccentColorBrush}"
-        DataContext="{Binding Main, Source={StaticResource Locator}}">
+        DataContext="{Binding Main, Source={StaticResource Locator}}" Loaded="MetroWindow_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -44,9 +44,9 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBox Grid.Column="1" Text="{Binding _find}" ></TextBox>
-            <Button Grid.Column="3" Content="Найти" Command="{Binding F}" CommandParameter="{Binding}"></Button>
-            <ComboBox Grid.Column="2" ItemsSource="{Binding Filter}" SelectedItem="{Binding _selectedFilter, Mode=TwoWay}"></ComboBox>
+            <TextBox Grid.Column="1" Text="{Binding _find}" TextChanged="Filter_TextChanged" Name="LibraryFilter"></TextBox>
+           
+            <ComboBox Grid.Column="2" x:Name="bookORauthor" ItemsSource="{Binding Filter}" SelectedItem="{Binding _selectedFilter, Mode=TwoWay}"></ComboBox>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -55,21 +55,17 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding Elements, Mode=TwoWay}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Book, Mode=TwoWay}"></TextBlock>
-                            <TextBlock Grid.Column="1" Text="{Binding Author, Mode=TwoWay}"></TextBlock>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <DataGrid Grid.Row="2" x:Name="gridLibrary" AutoGenerateColumns="False" ItemsSource="{Binding Elements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Книги" Binding="{Binding Book}" x:Name="BooksCardSystem" ></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Авторы">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ListBox ItemsSource="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="AuthorsCardSystem"></ListBox>
+                        </DataTemplate> 
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Controls:MetroWindow>

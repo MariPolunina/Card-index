@@ -31,9 +31,19 @@
                 <ColumnDefinition Width="4*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="ФИО автора"></TextBlock>
-            <TextBlock Grid.Column="1" Text="{Binding _nameOfAuthor}"></TextBlock>
+            <TextBox Grid.Column="1" Text="{Binding _nameOfAuthor}"></TextBox>
         </Grid>
-        <Button Grid.Row="1" Content="Добавить книгу"></Button>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Название книги"></TextBlock>
+            <TextBox Grid.Column="1"></TextBox>
+            <Button Grid.Column="2" Content="Добавить книгу"></Button>
+        </Grid>
+   
         <ItemsControl Grid.Row="2">
         </ItemsControl>
         <Grid Grid.Row="3">

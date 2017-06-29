@@ -9,8 +9,8 @@ namespace Library
    public class Books_Authors
     {
         public string Book { get; set; }
-        public string Author { get; set; }
-        public Books_Authors(string book, string author)
+        public List<string> Author { get; set; }
+        public Books_Authors(string book, List<String> author)
         {
             Book = book;
             Author = author;
