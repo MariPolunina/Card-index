@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Library.ViewModel;
 using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace Library
 {
@@ -14,16 +15,37 @@ namespace Library
         public void Execute(object parameter)
         {
             var vmFilter = parameter as MainViewModel;
+            ObservableCollection<Books_Authors> newElements = new ObservableCollection<Books_Authors>();
             if (vmFilter == null) throw new ArgumentNullException("Модель представления не может быть равна null");
-            var A = parameter as MainViewModel;
-            int index;
-            if(A._selectedElement== "по книге")
+            if(vmFilter._selectedElement== "по книге")
             {
-                for(int i=0; i<A.Elements.Count; i++)
+                var books = from v in vmFilter.Elements
+                        where v.Book == vmFilter._find
+                        select v;
+              
+                foreach(var b in books)
                 {
-                    if(A._find==A.Element)
+                    newElements.Add(b);
                 }
-            }    
+            }   
+            else
+            {
+                var authors = from v in vmFilter.Elements
+                        where v.Author == vmFilter._find
+                        select v;
+                foreach (var a in authors)
+                {
+                    newElements.Add(a);
+                }
+            }
+            var prop = parameter.GetType().GetProperty("Elements", BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Instance);
+            prop.SetValue(parameter, newElements);
+            var meth = parameter.GetType().GetMethod("RaisePropertyChanged");
+            if(meth!=null)
+            {
+                Object[] parameters = new object[] { "Elements" };
+                meth.Invoke(parameter, parameters);
+            }
         }
         public bool CanExecute(object parameter)
         {

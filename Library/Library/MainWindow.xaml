@@ -55,7 +55,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding Elements}">
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding Elements, Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border>
@@ -64,8 +64,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Book}"></TextBlock>
-                            <TextBlock Grid.Column="1" Text="{Binding Author}"></TextBlock>
+                            <TextBlock Text="{Binding Book, Mode=TwoWay}"></TextBlock>
+                            <TextBlock Grid.Column="1" Text="{Binding Author, Mode=TwoWay}"></TextBlock>
                         </Grid>
                     </Border>
                 </DataTemplate>
