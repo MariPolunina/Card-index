@@ -39,6 +39,7 @@ namespace Library.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AboutBookViewModel>();
         }
 
         /// <summary>
@@ -52,6 +53,13 @@ namespace Library.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+        public AboutBookViewModel AboutBook
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AboutBookViewModel>();
             }
         }
 

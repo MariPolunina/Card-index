@@ -3,6 +3,7 @@ using Library.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+System.Data.DataRowView
 
 namespace Library.ViewModel
 {
@@ -52,19 +53,6 @@ namespace Library.ViewModel
                 NameOfAuthor = value;
             }
         }
-        private Books_Authors selectedElement;
-        public Books_Authors _selectedElement
-        {
-            get
-            {
-                return selectedElement;
-            }
-            set
-            {
-                RaisePropertyChanged("selectedElement");
-                selectedElement = value;
-            }
-        }
         public List<string> Filter{ get; set; }
         private string SelectedFilter { get; set; }
         public string _selectedFilter
@@ -81,7 +69,6 @@ namespace Library.ViewModel
         }
         public List<string> Menu { get; set; }
         public string SelectedMenu { get; set; }
-        public ObservableCollection<Books_Authors> Elements { get; set; }
         public ObservableCollection<string> Authors { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public AboutBookCommand AboutBook { get; set; }
@@ -112,11 +99,6 @@ namespace Library.ViewModel
                 "А.И.Куприн",
                 "Н.В.Гоголь"
             };
-            Elements = new ObservableCollection<Books_Authors>();
-            Elements.Add(new Books_Authors("Война и мир", new ObservableCollection<string>() { "Л.Н.Толстой" }));
-            Elements.Add(new Books_Authors("Анна Каренина", new ObservableCollection<string>() { "Л.Н.Толстой" }));
-            Elements.Add(new Books_Authors("Гранатовый браслет", new ObservableCollection<string>() { "А.И.Куприн" }));
-            Elements.Add(new Books_Authors("Мертвые души", new ObservableCollection<string>() { "Н.В.Гоголь", "Л.Н.Толстой" }));
         }
 
         ////public override void Cleanup()

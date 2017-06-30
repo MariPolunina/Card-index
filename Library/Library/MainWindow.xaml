@@ -11,7 +11,8 @@
         Width="800"
         Title="Картотека"
         GlowBrush="{DynamicResource AccentColorBrush}"
-        DataContext="{Binding Main, Source={StaticResource Locator}}" Loaded="MetroWindow_Loaded">
+        DataContext="{Binding Main, Source={StaticResource Locator}}" 
+                      Loaded="MetroWindow_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -65,15 +66,15 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Книги"></TextBlock>
-            <ListBox x:Name="ListBooks" Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Books}" SelectedItem="{Binding _nameOfBook}">
+            <ListBox x:Name="ListBooks" Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Books}" SelectedItem="{Binding _nameOfBook, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding AboutBook}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding AboutBook}" CommandParameter="{Binding _nameOfBook}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListBox>
             <TextBlock Text="Авторы" Grid.Column="1"></TextBlock>
-            <ListBox x:Name="ListAuthors" Grid.Column="1" Grid.Row="1"  ItemsSource="{Binding Authors}" SelectedItem="{Binding _nameOfAuthor}">
+            <ListBox x:Name="ListAuthors" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Authors}" SelectedItem="{Binding _nameOfAuthor,UpdateSourceTrigger=PropertyChanged}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding AboutAuthor}"></i:InvokeCommandAction>
@@ -81,6 +82,5 @@
                 </i:Interaction.Triggers>
             </ListBox>
         </Grid>
-      
     </Grid>
 </Controls:MetroWindow>

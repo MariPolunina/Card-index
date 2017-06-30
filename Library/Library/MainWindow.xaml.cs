@@ -18,7 +18,7 @@ namespace Library
         {
             InitializeComponent();
             Closing += (s, e) => ViewModelLocator.Cleanup();
-            DataContext = new MainViewModel();
+         //   DataContext = new MainViewModel();
             
         }
 

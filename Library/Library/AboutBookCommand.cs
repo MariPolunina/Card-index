@@ -13,6 +13,7 @@ namespace Library
         {
            AboutBook A = new AboutBook();
             A.Show();
+            
         }
         public bool CanExecute(object parameter)
         {
