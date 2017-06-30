@@ -85,6 +85,7 @@ namespace Library.ViewModel
         public ObservableCollection<string> Authors { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public AboutBookCommand AboutBook { get; set; }
+        public AboutAuthorCommand AboutAuthor { get; set; }
         public AddBookComand A { get; set; }
         public AddAuthorCommand Au { get; set; }
         public MainViewModel()
@@ -97,6 +98,7 @@ namespace Library.ViewModel
             A = new AddBookComand();
             Au = new AddAuthorCommand();
             AboutBook = new AboutBookCommand();
+            AboutAuthor = new AboutAuthorCommand();
             Books = new ObservableCollection<string>()
             {
                 "Война и мир",
@@ -104,11 +106,17 @@ namespace Library.ViewModel
                 "Гранатовый браслет",
                 "Мертвые души"
             };
+            Authors = new ObservableCollection<string>()
+            {
+                "Л.Н.Толстой",
+                "А.И.Куприн",
+                "Н.В.Гоголь"
+            };
             Elements = new ObservableCollection<Books_Authors>();
-            Elements.Add(new Books_Authors("Война и мир", new List<string>() { "Л.Н.Толстой" }));
-            Elements.Add(new Books_Authors("Анна Каренина", new List<string>() { "Л.Н.Толстой" }));
-            Elements.Add(new Books_Authors("Гранатовый браслет", new List<string>() { "А.И.Куприн" }));
-            Elements.Add(new Books_Authors("Мертвые души", new List<string>() { "Н.В.Гоголь", "Л.Н.Толстой" }));
+            Elements.Add(new Books_Authors("Война и мир", new ObservableCollection<string>() { "Л.Н.Толстой" }));
+            Elements.Add(new Books_Authors("Анна Каренина", new ObservableCollection<string>() { "Л.Н.Толстой" }));
+            Elements.Add(new Books_Authors("Гранатовый браслет", new ObservableCollection<string>() { "А.И.Куприн" }));
+            Elements.Add(new Books_Authors("Мертвые души", new ObservableCollection<string>() { "Н.В.Гоголь", "Л.Н.Толстой" }));
         }
 
         ////public override void Cleanup()

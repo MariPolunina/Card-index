@@ -83,6 +83,7 @@
     <Compile Include="AboutAuthor.xaml.cs">
       <DependentUpon>AboutAuthor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AboutAuthorCommand.cs" />
     <Compile Include="AboutBookCommand.cs" />
     <Compile Include="AddAuthor.xaml.cs">
       <DependentUpon>AddAuthor.xaml</DependentUpon>

@@ -29,29 +29,48 @@ namespace Library
 
         private void Filter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(gridLibrary.ItemsSource).Refresh();
+           
+                CollectionViewSource.GetDefaultView(ListBooks.ItemsSource).Refresh();
+                CollectionViewSource.GetDefaultView(ListAuthors.ItemsSource).Refresh();
+
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(gridLibrary.ItemsSource).Filter = UserFilter;
+             CollectionViewSource.GetDefaultView(ListBooks.ItemsSource).Filter = UserFilter;
+             CollectionViewSource.GetDefaultView(ListAuthors.ItemsSource).Filter = UserFilter1;
         }
         private bool UserFilter(object item)
         {
             if (string.IsNullOrEmpty(LibraryFilter.Text)) return true;
-            var library = (Books_Authors)item;
+            var library = (string)item;
             if ((string)bookORauthor.SelectedItem == "по книге")
             {
-                return (library.Book.StartsWith(LibraryFilter.Text, System.StringComparison.OrdinalIgnoreCase));
+                return (library.StartsWith(LibraryFilter.Text, System.StringComparison.OrdinalIgnoreCase));
             }
             else
-           if ((string)bookORauthor.SelectedItem == "по автору")
-            {
+             if ((string)bookORauthor.SelectedItem == "по автору")
                 return true;
+            else
+            {
+                return (library.StartsWith(LibraryFilter.Text, System.StringComparison.OrdinalIgnoreCase));
             }
-            else return true;
         }
-
-
+        private bool UserFilter1(object item)
+        {
+            if (string.IsNullOrEmpty(LibraryFilter.Text)) return true;
+            var library = (string)item;
+                  if ((string)bookORauthor.SelectedItem == "по автору")
+            {
+                return (library.StartsWith(LibraryFilter.Text, System.StringComparison.OrdinalIgnoreCase));
+            }
+            else
+              if ((string)bookORauthor.SelectedItem == "по книге")
+                return true;
+                  else
+            {
+                return (library.StartsWith(LibraryFilter.Text, System.StringComparison.OrdinalIgnoreCase));
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Height="500"
@@ -45,7 +46,6 @@
             </Grid.ColumnDefinitions>
             <TextBlock Text="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBox Grid.Column="1" Text="{Binding _find}" TextChanged="Filter_TextChanged" Name="LibraryFilter"></TextBox>
-           
             <ComboBox Grid.Column="2" x:Name="bookORauthor" ItemsSource="{Binding Filter}" SelectedItem="{Binding _selectedFilter, Mode=TwoWay}"></ComboBox>
         </Grid>
         <Grid Grid.Row="3">
@@ -55,20 +55,32 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <DataGrid Grid.Row="2" x:Name="gridLibrary" AutoGenerateColumns="False" ItemsSource="{Binding Elements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding _selectedElement}" >
-            <DataGrid.InputBindings>
-                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding AboutBook}" CommandParameter="{Binding}"></MouseBinding>
-            </DataGrid.InputBindings>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Книги" Binding="{Binding Book}" x:Name="BooksCardSystem"></DataGridTextColumn>
-                <DataGridTemplateColumn Header="Авторы">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ListBox ItemsSource="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="AuthorsCardSystem"></ListBox>
-                        </DataTemplate> 
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Книги"></TextBlock>
+            <ListBox x:Name="ListBooks" Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Books}" SelectedItem="{Binding _nameOfBook}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding AboutBook}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+            <TextBlock Text="Авторы" Grid.Column="1"></TextBlock>
+            <ListBox x:Name="ListAuthors" Grid.Column="1" Grid.Row="1"  ItemsSource="{Binding Authors}" SelectedItem="{Binding _nameOfAuthor}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding AboutAuthor}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </Grid>
+      
     </Grid>
 </Controls:MetroWindow>
