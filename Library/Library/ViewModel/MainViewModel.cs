@@ -52,8 +52,8 @@ namespace Library.ViewModel
                 NameOfAuthor = value;
             }
         }
-        private string selectedElement;
-        public string _selectedElement
+        private Books_Authors selectedElement;
+        public Books_Authors _selectedElement
         {
             get
             {

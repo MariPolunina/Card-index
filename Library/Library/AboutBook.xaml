@@ -31,10 +31,24 @@
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Название"></TextBlock>
-            <TextBlock Grid.Column="1"></TextBlock>
+            <TextBlock Grid.Column="1" DataContext="{Binding _selectedElement}"></TextBlock>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список авторов"></TextBlock>
-        <ItemsControl Grid.Row="2"></ItemsControl>
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding _selectedElement}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock></TextBlock>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

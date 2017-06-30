@@ -11,7 +11,7 @@ namespace Library
     {
         public void Execute(object parameter)
         {
-           AboutAuthor A = new AboutAuthor();
+           AboutBook A = new AboutBook();
             A.Show();
         }
         public bool CanExecute(object parameter)

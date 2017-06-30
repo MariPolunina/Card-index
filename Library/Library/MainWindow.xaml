@@ -55,9 +55,12 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
-        <DataGrid Grid.Row="2" x:Name="gridLibrary" AutoGenerateColumns="False" ItemsSource="{Binding Elements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid Grid.Row="2" x:Name="gridLibrary" AutoGenerateColumns="False" ItemsSource="{Binding Elements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding _selectedElement}" >
+            <DataGrid.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding AboutBook}" CommandParameter="{Binding}"></MouseBinding>
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Книги" Binding="{Binding Book}" x:Name="BooksCardSystem" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Книги" Binding="{Binding Book}" x:Name="BooksCardSystem"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Авторы">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
