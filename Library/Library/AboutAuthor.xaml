@@ -30,8 +30,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="ФИО автора"></TextBlock>
-            <TextBlock Grid.Column="1"></TextBlock>
+            <TextBlock Text="ФИО автора" ></TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding _nameOfAuthor}"></TextBlock>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список кнниг"></TextBlock>
         <ItemsControl Grid.Row="2" ItemsSource="{Binding Books}"></ItemsControl>

@@ -66,10 +66,10 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Книги"></TextBlock>
-            <ListBox x:Name="ListBooks" Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Books}" SelectedItem="{Binding _nameOfBook, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <ListBox x:Name="ListBooks" Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Books}" SelectedItem="{Binding _nameOfBook, UpdateSourceTrigger=PropertyChanged}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding AboutBook}" CommandParameter="{Binding _nameOfBook}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding AboutBook}" CommandParameter="{Binding }"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListBox>

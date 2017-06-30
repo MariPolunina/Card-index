@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Library.ViewModel;
 
 namespace Library
 {
@@ -11,9 +12,9 @@ namespace Library
     {
         public void Execute(object parameter)
         {
-           AboutBook A = new AboutBook();
-            A.Show();
-            
+            var p = (MainViewModel)parameter;
+           AboutBook A = new AboutBook();       
+            A.Show();     
         }
         public bool CanExecute(object parameter)
         {

@@ -10,7 +10,7 @@
         Width="800"
         Title="О книге"
         GlowBrush="{DynamicResource AccentColorBrush}"
-                       DataContext="{Binding AboutBook, Source={StaticResource Locator}}" >
+        DataContext="{Binding Main, Source={StaticResource Locator}}" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,16 +23,15 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Название"></TextBlock>
-        <TextBlock Grid.Column="1" Text="{Binding _nameOfBook, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Column="1" x:Name="NameOfBookFORaboutBook" Text="{Binding _nameOfBook, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
         <TextBlock Grid.Row="1" Text="Список авторов"></TextBlock>
-        <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Books, UpdateSourceTrigger=PropertyChanged}"></ListBox>
+        <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Authors, UpdateSourceTrigger=PropertyChanged}"></ListBox>
         <Grid Grid.Row="3" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

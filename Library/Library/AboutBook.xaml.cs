@@ -16,6 +16,5 @@ namespace Library
             InitializeComponent();
             Closing += (s, e) => ViewModelLocator.Cleanup();
         }
-
     }
 }

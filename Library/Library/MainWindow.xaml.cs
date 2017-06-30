@@ -17,11 +17,12 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            Closing += (s, e) => ViewModelLocator.Cleanup();
-         //   DataContext = new MainViewModel();
-            
+            Closing += (s, e) => ViewModelLocator.Cleanup();       
         }
-
+       // public object sendBook()
+       // {
+          //  return ListBooks.SelectedItem;
+     //   }
         private void CommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             this.Close();
@@ -34,7 +35,6 @@ namespace Library
                 CollectionViewSource.GetDefaultView(ListAuthors.ItemsSource).Refresh();
 
         }
-
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
              CollectionViewSource.GetDefaultView(ListBooks.ItemsSource).Filter = UserFilter;

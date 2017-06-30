@@ -3,7 +3,7 @@ using Library.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-System.Data.DataRowView
+using System.Data;
 
 namespace Library.ViewModel
 {
@@ -36,11 +36,11 @@ namespace Library.ViewModel
             }
             set
             {
-                RaisePropertyChanged("NameOfBook");
+                RaisePropertyChanged("_nameOfBook");
                 NameOfBook = value;
             }
         }
-        private string NameOfAuthor;
+        private  string NameOfAuthor;
         public string _nameOfAuthor
         {
             get
@@ -49,7 +49,7 @@ namespace Library.ViewModel
             }
             set
             {
-                RaisePropertyChanged("NameOfAuthor");
+               RaisePropertyChanged(" _nameOfAuthor");
                 NameOfAuthor = value;
             }
         }
@@ -100,7 +100,6 @@ namespace Library.ViewModel
                 "Н.В.Гоголь"
             };
         }
-
         ////public override void Cleanup()
         ////{
         ////    // Clean up if needed
