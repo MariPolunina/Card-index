@@ -19,5 +19,10 @@ namespace Library
             M._nameOfAuthor = NameOfAuthorForAboutAuthor.Text;
             Books.ItemsSource = M.Addbook();
         }
+
+        private void Exit(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

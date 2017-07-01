@@ -93,7 +93,7 @@ namespace Library.ViewModel
             {
                 new Books_Authors("Война и мир", new ObservableCollection<string>() { "Л.Н.Толстой" }),
                  new Books_Authors("Анна Каренина", new ObservableCollection<string>() { "Л.Н.Толстой" }),
-                   new Books_Authors( "Гранатовый браслет", new ObservableCollection<string>() { "Л.Н.Толстой",  "А.И.Куприн" }),
+                   new Books_Authors( "Гранатовый браслет", new ObservableCollection<string>() {"Л.Н.Толстой",  "А.И.Куприн"}),
                    new Books_Authors(  "Мертвые души", new ObservableCollection<string>() { "Н.В.Гоголь" })
             };
             ElementsAuthor = new ObservableCollection<Authors_Books>()
