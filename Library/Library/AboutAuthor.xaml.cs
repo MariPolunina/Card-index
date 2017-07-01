@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
+using Library.ViewModel;
+using MahApps.Metro.Controls;
+using System.Collections.ObjectModel;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Library
 {
     /// <summary>
     /// Логика взаимодействия для AboutAuthor.xaml
     /// </summary>
-    public partial class AboutAuthor 
+    public partial class AboutAuthor:MetroWindow 
     {
         public AboutAuthor()
         {
             InitializeComponent();
+            Closing += (s, e) => ViewModelLocator.Cleanup();
+            MainViewModel M = new MainViewModel();
+            M._nameOfAuthor = NameOfAuthorForAboutAuthor.Text;
+            Books.ItemsSource = M.Addbook();
         }
     }
 }

@@ -15,6 +15,9 @@ namespace Library
         {
             InitializeComponent();
             Closing += (s, e) => ViewModelLocator.Cleanup();
+            MainViewModel M = new MainViewModel();
+           M._nameOfBook = NameOfBookFORaboutBook.Text;
+           Authors.ItemsSource= M.Addauthor();
         }
     }
 }

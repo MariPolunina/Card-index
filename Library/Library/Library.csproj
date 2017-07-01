@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="AboutAuthorCommand.cs" />
     <Compile Include="AboutBookCommand.cs" />
+    <Compile Include="AboutBookConverter.cs" />
     <Compile Include="AddAuthor.xaml.cs">
       <DependentUpon>AddAuthor.xaml</DependentUpon>
     </Compile>
@@ -93,6 +94,7 @@
     <Compile Include="AddBooks.xaml.cs">
       <DependentUpon>AddBooks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Authors_Books.cs" />
     <Compile Include="Books_Authors.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\DataItem.cs" />

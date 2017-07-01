@@ -19,10 +19,6 @@ namespace Library
             InitializeComponent();
             Closing += (s, e) => ViewModelLocator.Cleanup();       
         }
-       // public object sendBook()
-       // {
-          //  return ListBooks.SelectedItem;
-     //   }
         private void CommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             this.Close();
