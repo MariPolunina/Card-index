@@ -18,6 +18,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -45,7 +48,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Закрыть"></Button>
+            <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

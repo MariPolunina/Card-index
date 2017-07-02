@@ -108,6 +108,7 @@ namespace Library.ViewModel
                 Author = value;
             }
         }
+
         public MainViewModel()
         {
             Filter = new List<string>()
@@ -165,13 +166,6 @@ namespace Library.ViewModel
                 if (x.Author == _nameOfAuthor) AboutAuthors = x.Books;
             }
             return AboutAuthors;
-        }
-        public void SaveChahges(ObservableCollection<string> newbooks, ObservableCollection<string> newauthors, ObservableCollection<Books_Authors> newElements, ObservableCollection<Authors_Books> newElementsAuthors )
-        {
-            Books = newbooks;
-            Authors = newauthors;
-            Elements = newElements;
-            ElementsAuthor = newElementsAuthors;
         }
         ////public override void Cleanup()
         ////{

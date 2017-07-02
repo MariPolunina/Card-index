@@ -18,6 +18,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -31,7 +34,7 @@
                 <ColumnDefinition Width="4*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="ФИО автора"></TextBlock>
-            <TextBox Grid.Column="1" Text="{Binding _nameOfAuthor}"></TextBox>
+            <TextBox Grid.Column="1" Text="{Binding _name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -40,8 +43,8 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Название книги"></TextBlock>
-            <TextBox Grid.Column="1"></TextBox>
-            <Button Grid.Column="2" Content="Добавить книгу"></Button>
+            <TextBox Grid.Column="1" Text="{Binding _author, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button Grid.Column="2" Content="Добавить книгу" Command="{Binding AddNewAuthor}" CommandParameter="{Binding}"></Button>
         </Grid>
    
         <ItemsControl Grid.Row="2">
@@ -51,8 +54,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Сохранить"></Button>
-            <Button Grid.Column="1" Content="Закрыть"></Button>
+            <Button Grid.Column="1" Content="Закрыть" Command="Close"></Button>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

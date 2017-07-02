@@ -50,11 +50,7 @@ namespace Library
             }
             else indexnewBook = 0;
             p.ElementsAuthor.Add(new Authors_Books(p._author, new ObservableCollection<string>() { }));
-            MainViewModel M = new MainViewModel();
-          //  M.Books = p.Books;
-         //   M.Authors = p.Authors;
-          //  M.Elements = p.Elements;
-          //  M.ElementsAuthor = p.ElementsAuthor;
+            ///добавление в бд, которая не создается
         }
         public bool CanExecute(object parameter)
         {
