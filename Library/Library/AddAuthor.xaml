@@ -25,30 +25,28 @@
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Название"></TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Название"></TextBlock>
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Добавить автора"></Button>
-            <TextBox Grid.Column="0"></TextBox>
+            <Button Grid.Column="1" Content="Добавить автора" Command="{Binding AddNewAuthor}" CommandParameter="{Binding}"></Button>
+            <TextBox Grid.Column="0" Text="{Binding _author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </Grid>
         <TextBlock Text="ФИО автора" Grid.Row="1"></TextBlock>
-        <TextBox Grid.Column="1" Text="{Binding _nameOfBook}"></TextBox>
+        <TextBox Grid.Column="1" Text="{Binding _name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <Grid Grid.Row="3" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Сохранить"></Button>
             <Button Grid.Column="1" Content="Закрыть"></Button>
         </Grid>
     </Grid>
-
-    </Controls:MetroWindow>
+</Controls:MetroWindow>
 

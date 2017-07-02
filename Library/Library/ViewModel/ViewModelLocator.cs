@@ -39,7 +39,7 @@ namespace Library.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
-            
+            SimpleIoc.Default.Register<AddAuthorViewModel>();
         }
 
         /// <summary>
@@ -55,8 +55,13 @@ namespace Library.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
-
+        public AddAuthorViewModel Author
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddAuthorViewModel>();
+            }
+        }
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>
