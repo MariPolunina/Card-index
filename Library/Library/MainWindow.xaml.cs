@@ -23,7 +23,7 @@ namespace Library
         {
             this.Close();
         }
-
+        //Поиск за счет изменения строки поиска
         private void Filter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
            
@@ -36,6 +36,7 @@ namespace Library
              CollectionViewSource.GetDefaultView(ListBooks.ItemsSource).Filter = UserFilter;
              CollectionViewSource.GetDefaultView(ListAuthors.ItemsSource).Filter = UserFilter1;
         }
+        //Поиск с учетом фильтра: по книге и автору.
         private bool UserFilter(object item)
         {
             if (string.IsNullOrEmpty(LibraryFilter.Text)) return true;

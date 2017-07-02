@@ -11,6 +11,7 @@ namespace Library
     /// </summary>
     public partial class AboutBook : MetroWindow
     {
+        //Действия точно такие же, как и об авторе
         public AboutBook()
         {
             InitializeComponent();

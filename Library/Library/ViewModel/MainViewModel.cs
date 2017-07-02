@@ -17,6 +17,7 @@ namespace Library.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        //строка для поиска
         private string find;
         public string _find
         {
@@ -29,6 +30,7 @@ namespace Library.ViewModel
                 find = value;
             }
         }
+        //выбранная книга из окна с поиском, так же отображается в окне о книге в качестве книги, которую мы выбрали, что посмотреть о ней информацию
         private string NameOfBook;
         public string _nameOfBook
         {
@@ -42,6 +44,7 @@ namespace Library.ViewModel
                 NameOfBook = value;
             }
         }
+        //выбранный автор из окна с поиском; используется в окне об авторе в качестве выбранного автора
         private string NameOfAuthor;
         public string _nameOfAuthor
         {
@@ -55,6 +58,7 @@ namespace Library.ViewModel
                 NameOfAuthor = value;
             }
         }
+        //Выбрать поиск по книге или по автору
         public List<string> Filter { get; set; }
         private string SelectedFilter { get; set; }
         public string _selectedFilter
@@ -72,7 +76,9 @@ namespace Library.ViewModel
         public List<string> Menu { get; set; }
         public string SelectedMenu { get; set; }
         public ObservableCollection<string> Authors { get; set; }
+        //Список книга и его авторы
         public ObservableCollection<Books_Authors> Elements { get; set; }
+        //Список автор и его книга
         public ObservableCollection<Authors_Books> ElementsAuthor { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public ObservableCollection<string> AboutBooks { get; set; }
@@ -82,6 +88,7 @@ namespace Library.ViewModel
         public AddBookComand A { get; set; }
         public Add_New_AuthorCommand AddNewAuthor { get; set; }      
         public AddAuthorCommand Au { get; set; }
+        //Название вводимой книги, которую нужно добавить
         private string Name;
         public string _name
         {
@@ -95,6 +102,7 @@ namespace Library.ViewModel
                 Name = value;
             }
         }
+        //Имя автора, которого нужно добавить
         private string Author;
         public string _author
         {
@@ -108,7 +116,6 @@ namespace Library.ViewModel
                 Author = value;
             }
         }
-
         public MainViewModel()
         {
             Filter = new List<string>()
@@ -116,6 +123,7 @@ namespace Library.ViewModel
                 "по книге",
                 "по автору"
             };
+            //Заполнение собственоручно, потому что подключится к бд я не могу
             Elements = new ObservableCollection<Books_Authors>()
             {
                 new Books_Authors("Война и мир", new ObservableCollection<string>() { "Л.Н.Толстой" }),
@@ -151,6 +159,7 @@ namespace Library.ViewModel
             AboutAuthors = new ObservableCollection<string>();
             AddNewAuthor = new Add_New_AuthorCommand();
         }
+        //Методы отвечают за отображение информаии об авторе и книге
         public ObservableCollection<string> Addauthor()
         {
             foreach (var x in Elements)

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace Library
 {
+    //Добавление автора-книгу, книгу-автора в бд
     public class Add_New_AuthorCommand:ICommand
     {
         public void Execute(object parameter)

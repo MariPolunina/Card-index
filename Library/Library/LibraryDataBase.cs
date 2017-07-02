@@ -22,21 +22,13 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Book>()
-                        .HasMany<Author>(s => s.Authors)
-                        .WithMany(c => c.Books)
-                        .Map(cs =>
-                        {
-                            cs.MapLeftKey("StudentRefId");
-                            cs.MapRightKey("CourseRefId");
-                            cs.ToTable("StudentCourse");
-                        });
-
+            base.OnModelCreating(modelBuilder);
         }
         // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
         // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+         public virtual DbSet<Book> MyBook { get; set; }
+        public virtual DbSet<Author> MyAuthor { get; set; }
     }
     public class Book
     {

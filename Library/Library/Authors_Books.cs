@@ -9,6 +9,7 @@ namespace Library
 {
    public class Authors_Books
     {
+        //Автор-книги
         public string Author { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public Authors_Books(string author, ObservableCollection<String> books)

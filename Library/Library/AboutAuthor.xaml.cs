@@ -11,6 +11,7 @@ namespace Library
     /// </summary>
     public partial class AboutAuthor:MetroWindow 
     {
+        //Вызов метода, который выводит информацию о книге
         public AboutAuthor()
         {
             InitializeComponent();
