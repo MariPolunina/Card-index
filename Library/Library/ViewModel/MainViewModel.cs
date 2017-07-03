@@ -77,9 +77,8 @@ namespace Library.ViewModel
         public string SelectedMenu { get; set; }
         public ObservableCollection<string> Authors { get; set; }
         //Список книга и его авторы
-        public ObservableCollection<Books_Authors> Elements { get; set; }
+        public ObservableCollection<Authors_Books> Elements { get; set; }
         //Список автор и его книга
-        public ObservableCollection<Authors_Books> ElementsAuthor { get; set; }
         public ObservableCollection<string> Books { get; set; }
         public ObservableCollection<string> AboutBooks { get; set; }
         public ObservableCollection<string> AboutAuthors { get; set; }
@@ -124,19 +123,13 @@ namespace Library.ViewModel
                 "по автору"
             };
             //Заполнение собственоручно, потому что подключится к бд я не могу
-            Elements = new ObservableCollection<Books_Authors>()
+            Elements = new ObservableCollection<Authors_Books>()
             {
-                new Books_Authors("Война и мир", new ObservableCollection<string>() { "Л.Н.Толстой" }),
-                 new Books_Authors("Анна Каренина", new ObservableCollection<string>() { "Л.Н.Толстой" }),
-                   new Books_Authors( "Гранатовый браслет", new ObservableCollection<string>() {"Л.Н.Толстой",  "А.И.Куприн"}),
-                   new Books_Authors(  "Мертвые души", new ObservableCollection<string>() { "Н.В.Гоголь" })
-            };
-            ElementsAuthor = new ObservableCollection<Authors_Books>()
-            {
-                new Authors_Books("Л.Н.Толстой", new ObservableCollection<string>() { "Анна Каренина","Война и мир","Гранатовый браслет" }),
-                 new Authors_Books("Анна Каренина", new ObservableCollection<string>() { "Л.Н.Толстой" }),
-                   new Authors_Books( "А.И.Куприн", new ObservableCollection<string>() { "Гранатовый браслет" }),
-                   new Authors_Books(  "Н.В.Гоголь", new ObservableCollection<string>() { "Мертвые души" })
+                new Authors_Books("Война и мир", "Л.Н.Толстой" ),
+                 new Authors_Books("Анна Каренина", "Л.Н.Толстой" ),
+                   new Authors_Books( "Гранатовый браслет", "Л.Н.Толстой"),
+                    new Authors_Books("Гранатовый браслет", "А.И.Куприн"),
+                   new Authors_Books(  "Мертвые души", "Н.В.Гоголь" )
             };
             A = new AddBookComand();
             Au = new AddAuthorCommand();
@@ -164,15 +157,15 @@ namespace Library.ViewModel
         {
             foreach (var x in Elements)
             {
-                if (x.Book == _nameOfBook) AboutBooks = x.Author;
+                if (x.Book == _nameOfBook) AboutBooks.Add(x.Author);
             }
             return AboutBooks;
         }
         public ObservableCollection<string> Addbook()
         {
-            foreach (var x in ElementsAuthor)
+            foreach (var x in Elements)
             {
-                if (x.Author == _nameOfAuthor) AboutAuthors = x.Books;
+                if (x.Author == _nameOfAuthor) AboutAuthors.Add(x.Book);
             }
             return AboutAuthors;
         }

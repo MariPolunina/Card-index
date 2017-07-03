@@ -106,7 +106,6 @@
     </Compile>
     <Compile Include="Add_New_AuthorCommand.cs" />
     <Compile Include="Authors_Books.cs" />
-    <Compile Include="Books_Authors.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="LibraryDataBase.cs" />
     <Compile Include="Model\DataItem.cs" />

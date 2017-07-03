@@ -9,13 +9,13 @@ namespace Library
 {
    public class Authors_Books
     {
-        //Автор-книги
+        //Авторы-книги
         public string Author { get; set; }
-        public ObservableCollection<string> Books { get; set; }
-        public Authors_Books(string author, ObservableCollection<String> books)
+        public string Book { get; set; }
+        public Authors_Books( string books, string author)
         {
             Author = author;
-            Books = books;
+            Book = books;
         }
     }
 }
