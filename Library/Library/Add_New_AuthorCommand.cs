@@ -14,7 +14,7 @@ namespace Library
         {
             using (LibraryDataBase DataBase = new LibraryDataBase())
             {
-                Book newbook; Author newauthor;
+               // Book newbook; Author newauthor;
                 int indexnewAuthor = 0;
                 int indexnewBook = 0;
                 var p = parameter as MainViewModel;
